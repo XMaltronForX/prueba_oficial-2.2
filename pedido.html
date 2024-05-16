@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,33 +7,306 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-    
-    <link rel="stylesheet" href="css/principal.css">
-
+    <link rel="stylesheet" href="css/pedido.css">
 </head>
 <body>
     
-    <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light ">
-          <a class="navbar-brand" href="principal.html">
-            <img src="img/extremosur.jpg" alt="">
-          </a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-              <a class="nav-item nav-link" href="carta.html">Carta</a>
-              <a class="nav-item nav-link" href="local.html">Ubicanos</a>
-              <a class="nav-item nav-link" href="nosotros.html">Nosotros</a>
-              <a class="nav-item nav-link" href="pedido.html">Has tu pedido</a>
-              <a class="nav-item nav-link" href="contactanos.html">Contactanos</a>
-            </div>
+    
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light ">
+      <a class="navbar-brand" href="principal.html">
+        <img src="img/extremosur.jpg" alt="">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-item nav-link" href="carta.html">Carta</a>
+          <a class="nav-item nav-link" href="local.html">Ubicanos</a>
+          <a class="nav-item nav-link" href="nosotros.html">Nosotros</a>
+          <a class="nav-item nav-link" href="pedido.html">Has tu pedido</a>
+          <a class="nav-item nav-link" href="contactanos.html">Contactanos</a>
+        </div>
+      </div>
+    </nav>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="principal.html">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Pedido</li>
+      </ol>
+  </nav>
+    <div class="container-sm mt-5 form-container">
+      <form class="row g-3 needs-validation" novalidate>
+          <div class="col-md-12 mb-4">
+              <label for="txt_celular" class="form-label">Celular</label>
+              <input type="text" class="form-control" id="txt_celular" placeholder="ejemplo 56911111111" required>
+              <div class="invalid-feedback">
+                  Por favor, ingresa tu número de celular.
+              </div>
           </div>
-        </nav>
-<br>
+
+          <div class="col-md-12 mb-4">
+              <label for="tipo_pedido" class="form-label">Elige tu tipo de pedido:</label>
+              <select class="form-select" id="tipo_pedido" onchange="calcularPrecio()" required>
+                  <option value="" selected disabled>Selecciona una opción</option>
+                  <option value="waffle">Waffle</option>
+                  <option value="crepes">Crepes</option>
+                  <option value="torta_waffle">Torta de Waffle</option>
+              </select>
+              <div class="invalid-feedback">
+                  Por favor, elige una opción.
+              </div>
+          </div>
+
+          <div class="col-md-12 mb-4">
+              <label for="whatsapp" class="form-label">Elige tu base:</label>
+              <select class="form-select" id="whatsapp" onchange="calcularPrecio()" required>
+                  <option value="" selected disabled>Selecciona una opción</option>
+                  <option value="nutella">Nutella</option>
+                  <option value="manjar">Manjar</option>
+                  <option value="ambos">Ambos</option>
+              </select>
+              <div class="invalid-feedback">
+                Por favor, elige una opción.
+              </div>
+          </div>
+
+          <div id="precio" class="col-md-12 mb-4"></div>
+
+          <div class="col-md-12 mb-4">
+              <label for="salsa1" class="form-label">Elige tu 1ª salsa (opcional):</label>
+              <select class="form-select" id="salsa1">
+                  <option value="sin_salsa">Sin salsa</option>
+                  <option value="chocolate">Chocolate</option>
+                  <option value="manjar">Manjar</option>
+                  <option value="caramelo">Caramelo</option>
+                  <option value="frambueza">Frambueza</option>
+              </select>
+          </div>
+
+          <div class="col-md-12 mb-4">
+              <label for="salsa2" class="form-label">Elige tu 2ª salsa (opcional):</label>
+              <select class="form-select" id="salsa2">
+                  <option value="sin_salsa">Sin salsa</option>
+                  <option value="chocolate">Chocolate</option>
+                  <option value="manjar">Manjar</option>
+                  <option value="caramelo">Caramelo</option>
+                  <option value="frambueza">Frambueza</option>
+              </select>
+          </div>
+
+          <div class="col-md-12 mb-4">
+              <label for="toping" class="form-label">Elige tu toping:</label>
+              <select class="form-select" id="toping" required>
+                  <option value="" selected disabled>Selecciona una opción</option>
+                  <option value="sin_toping">Sin toping</option>
+                  <option value="costarama">Costarama</option>
+                  <option value="oreo">Oreo</option>
+                  <option value="obsesion">Obsesión</option>
+                  <option value="chubi">Chubi</option>
+                  <option value="marshmallow">Marshmallow</option>
+                  <option value="chip_de_chocolate">Chip de Chocolate</option>
+                  <option value="chip_de_colores">Chip de Colores</option>
+                  <option value="choco_krispies">Choco Krispies</option>
+              </select>
+              <div class="invalid-feedback">
+                Por favor, elige una opción.
+              </div>
+          </div>
+
+          <div class="col-md-12 mb-4">
+              <label for="crema" class="form-label">¿Quieres crema?</label>
+              <select class="form-select" id="crema" required>
+                  <option value="" selected disabled>Selecciona una opción</option>
+                  <option value="no">No</option>
+                  <option value="si">Sí</option>
+              </select>
+              <div class="invalid-feedback">
+                  Por favor, elige una opción.
+              </div>
+          </div>
+
+          <div class="col-md-12 mb-4">
+              <label for="helado" class="form-label">¿Quieres helado?</label>
+              <select class="form-select" id="helado" onchange="mostrarOpcionesHelado()" required>
+                  <option value="" selected disabled>Selecciona una opción</option>
+                  <option value="no">No</option>
+                  <option value="si">Sí</option>
+              </select>
+              <div class="invalid-feedback">
+                  Por favor, elige una opción.
+              </div>
+          </div>
+
+          <div class="col-md-12 mb-4" id="opciones_helado" style="display: none;">
+              <label for="sabores_helado" class="form-label">Elige tus sabores de helado:</label>
+              <select class="form-select" id="sabores_helado" required>
+                  <option value="vainilla">Vainilla</option>
+                  <option value="pina">Piña</option>
+                  <option value="chocolate">Chocolate</option>
+                  <option value="frutos">Frutos del bosque</option>
+                  <option value="lucuma">Lucuma manjar</option>
+                  <option value="frplatan">Frutilla platano</option>
+                  <option value="unicornio">unicornio</option>
+                  <option value="3leche">Tres leches</option>
+                  <option value="banand">Banana Split</option>
+              </select>
+          </div>
+
+          <div class="col-md-12 mb-4">
+              <button type="submit" class="btn btn-primary" id="btn_notificar">Enviar pedido</button>
+          </div>
+          <div class="col-md-12 mb-4">
+            <a href="carta.html" class="btn btn-secondary" target="_blank">Ver carta</a>
+          </div>
+      </form>
+    </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                var token = "GA240514010127";
+                var api = "https://script.google.com/macros/s/AKfycbyoBhxuklU5D3LTguTcYAS85klwFINHxxd-FroauC4CmFVvS0ua/exec";
+
+                // Agregar evento submit para la validación del formulario
+                $("form").on('submit', function(event) {
+                    // Si el formulario es inválido, evita el envío
+                    if (!this.checkValidity()) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    } else {
+                        // Si es válido, realiza el envío del pedido
+                        var salsas = [];
+                        var numSalsasSeleccionadas = 0;
+                        var salsa1 = $("#salsa1").val();
+                        if (salsa1 !== 'sin_salsa' && numSalsasSeleccionadas < 2) {
+                            salsas.push(salsa1);
+                            numSalsasSeleccionadas++;
+                        }
+                        var salsa2 = $("#salsa2").val();
+                        if (salsa2 !== 'sin_salsa' && numSalsasSeleccionadas < 2) {
+                            salsas.push(salsa2);
+                            numSalsasSeleccionadas++;
+                        }
+                        var toping = $("#toping").val();
+                        var crema = $("#crema").val();
+                        var tipo_pedido = $("#tipo_pedido").val();
+                        var base = $("#whatsapp").val();
+                        var precio = 0;
+                                              
+                        if (tipo_pedido === "torta_waffle") {
+                            if (base === "nutella") {
+                                precio += 13000;
+                            } else if (base === "manjar") {
+                                precio += 12000;
+                            } else if (base === "ambos") {
+                                precio += 14000;
+                            }
+                        } else {
+                            if (base === "nutella") {
+                                precio += 3800;
+                            } else if (base === "manjar") {
+                                precio += 3300;
+                            } else if (base === "ambos") {
+                                precio += 4000;
+                            }
+                        }
 
 
-</div>
+                        var mensaje = "*Pedido:* Base : " + whatsapp;
+                        mensaje += ", Salsas: " + (salsas.length > 0 ? salsas.join(", ") : "Ninguna");
+                        mensaje += ", Toping: " + toping;
+                        mensaje += ", Crema: " + crema;
+                        mensaje += ", Precio: $" + precio;
+
+                        var payload = {
+                            "op": "registermessage",
+                            "token_qr": token,
+                            "mensajes": [
+                                {"numero": $("#txt_celular").val(), "mensaje": mensaje},
+                                {"numero": $("#txt_celular").val(), "imagenbase64": $("#txt_archivo_base64").val()}
+                            ]
+                        };
+                        $.ajax({
+                            url: api,
+                            jsonp: "callback",
+                            method: 'POST',
+                            data: JSON.stringify(payload),
+                            async: false,
+                            success: function(respuestaSolicitud) {
+                                alert(respuestaSolicitud.message);
+                            }
+                        });
+                    }
+
+                    this.classList.add('was-validated');
+                });
+            });
+
+            function base64(file, callback){
+                var coolFile = {};
+                function readerOnload(e){
+                    var base64 = btoa(e.target.result);
+                    coolFile.base64 = base64;
+                    callback(coolFile)
+                };
+
+                var reader = new FileReader();
+                reader.onload = readerOnload;
+
+                var file = file[0].files[0];
+                coolFile.filetype = file.type;
+                coolFile.size = file.size;
+                coolFile.filename = file.name;
+                reader.readAsBinaryString(file);
+            }
+
+            function calcularPrecio() {
+    var tipo_pedido = $("#tipo_pedido").val();
+    var base = $("#whatsapp").val();
+    var helado = $("#helado").val();
+    var precio = 0;
+
+    if (tipo_pedido === "torta_waffle") {
+        if (base === "nutella") {
+            precio += 13000;
+        } else if (base === "manjar") {
+            precio += 12000;
+        } else if (base === "ambos") {
+            precio += 14000;
+        }
+    } else {
+        if (base === "nutella") {
+            precio += 3800;
+        } else if (base === "manjar") {
+            precio += 3300;
+        } else if (base === "ambos") {
+            precio += 4000;
+        }
+    }
+
+    if (helado === "si") {
+        precio += 900;
+    }
+
+    document.getElementById("precio").innerText = "Precio: $" + precio;
+}
+
+            
+function mostrarOpcionesHelado() {
+    var helado = $('#helado').val();
+    if (helado === 'si') {
+        $('#opciones_helado').show();
+        calcularPrecio(); 
+    } else {
+        $('#opciones_helado').hide();
+        calcularPrecio();
+    }
+}
+            
+        </script>
+    </div>
 </body>
 </html>

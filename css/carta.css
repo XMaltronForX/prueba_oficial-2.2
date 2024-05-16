@@ -32,3 +32,30 @@ body {
       height: 100px;
     }
   
+    .pink-box {
+      background-color: #ffc0cb; /* light pink */
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 20px; /* Add margin at the bottom to separate from other content */
+  }
+
+.pink-box h2 {
+    font-size: 55px; /* Aumenta el tamaño de la letra para h2 */
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.pink-box h3 {
+    font-size: 35px; /* Aumenta el tamaño de la letra para h3 */
+    font-weight: bold;
+}
+
+.pink-box .text-center {
+    text-align: center; /* Centra el texto */
+}
+
+.btn{
+  font-size: 30px;
+  color: #fffdfd;
+  background-color: #31beff;
+}
