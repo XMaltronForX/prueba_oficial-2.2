@@ -5,30 +5,33 @@ body {
 }
 
 .nav-item {
-    border: 2px solid #e64141;
-    border-radius: 10px;
-    margin: 0 15px;
-    padding: 10px 20px;
-    background-color: white;
-    font-size: 18px;
-    font-family: 'Roboto';
-    font-size: 30px;
-  }
+  border: 2px solid #e64141;
+  border-radius: 10px;
+  margin: 15px;
+  padding: 10px 20px;
+  background-color: white;
+  font-size: 18px;
+  font-family: 'Roboto';
+  font-size: 30px;
+}
 
-  .nav-item:hover {
-    background-color: #2760fd;
-  }
+.nav-item:hover {
+  background-color: #2760fd;
+}
 
-  .navbar {
-    border: 2px solid #e64141;
+.navbar {
+  border: 2px solid #e64141;
+  border-radius: 15px; /* Añadido para bordes redondeados */
+  background-color: #f55aed;
+  font-size: 18px;
+}
 
-    background-color: #f55aed;
-    font-size: 18px;
-    
-  }
-  
-  .navbar-brand img {
-    width: 100px;
-    height: 100px;
-  }
+.navbar-brand img {
+  width: 100px;
+  height: 100px;
+}
+
+.carousel-item img {
+  max-height: 700px; /* Altura máxima de las imágenes */
+  margin: 0 auto; /* Centrar las imágenes horizontalmente */}
 

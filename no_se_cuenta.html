@@ -10,11 +10,10 @@
     <link rel="stylesheet" href="css/pedido.css">
 </head>
 <body>
-    
   <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light ">
       <a class="navbar-brand" href="principal.html">
-        <img src="img/logo.png" alt="">
+        <img src="img/extremosur.jpg" alt="">
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -25,7 +24,7 @@
           <a class="nav-item nav-link" href="local.html">Ubicanos</a>
           <a class="nav-item nav-link" href="nosotros.html">Nosotros</a>
           <a class="nav-item nav-link" href="pedido.html">Haz tu pedido</a>
-          <a class="nav-item nav-link" href="contactanos.html">Contáctanos</a>
+          <a class="nav-item nav-link" href="contactanos.html">Contactanos</a>
         </div>
       </div>
     </nav>
@@ -34,7 +33,7 @@
           <li class="breadcrumb-item"><a href="principal.html">Home</a></li>
           <li class="breadcrumb-item active" aria-current="page">Pedido</li>
       </ol>
-  </nav>
+    </nav>
     <div class="container-sm mt-5 form-container">
       <form class="row g-3 needs-validation" novalidate>
           <div class="col-md-12 mb-4">
@@ -144,12 +143,12 @@
                   <option value="vainilla">Vainilla</option>
                   <option value="pina">Piña</option>
                   <option value="chocolate">Chocolate</option>
-                  <option value="frutos_del_bosque">Frutos del bosque</option>
-                  <option value="lucuma_manjar">Lucuma manjar</option>
-                  <option value="frutilla_platano">Frutilla platano</option>
-                  <option value="unicornio">Unicornio</option>
-                  <option value="3_leche">Tres leches</option>
-                  <option value="banana_split">Banana Split</option>
+                  <option value="frutos">Frutos del bosque</option>
+                  <option value="lucuma">Lucuma manjar</option>
+                  <option value="frplatan">Frutilla platano</option>
+                  <option value="unicornio">unicornio</option>
+                  <option value="3leche">Tres leches</option>
+                  <option value="banand">Banana Split</option>
               </select>
           </div>
 
@@ -166,25 +165,13 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js"></script>
     <script>
         $(document).ready(function() {
-            var token = "GA240516160045";
-            var api = "https://script.google.com/macros/s/AKfycbyoBhxuklU5D3LTguTcYAS85klwFINHxxd-FroauC4CmFVvS0ua/exec";
-
+            // Agregar evento submit para la validación del formulario
             $("form").on('submit', function(event) {
-                // Si el formulario es inválido, evita el envío
-                if (!this.checkValidity()) {
-                    event.preventDefault();
+                event.preventDefault();
+                
+                if (this.checkValidity() === false) {
                     event.stopPropagation();
                 } else {
-                    // Validación adicional para el número de celular
-                    var celular = $("#txt_celular").val();
-                    if (isNaN(celular) || celular.length != 11) {
-                        event.preventDefault();
-                        event.stopPropagation();
-                        alert('El teléfono debe tener exactamente 11 caracteres y solo contener números. Ej. 56966112233');
-                        return;
-                    }
-
-                    // Si es válido, realiza el envío del pedido
                     var salsas = [];
                     var numSalsasSeleccionadas = 0;
                     var salsa1 = $("#salsa1").val();
@@ -202,7 +189,29 @@
                     var tipo_pedido = $("#tipo_pedido").val();
                     var base = $("#whatsapp").val();
                     var helado = $("#helado").val();
-                    var precio = calcularPrecio();
+                    var precio = 0;
+                    
+                    if (tipo_pedido === "torta_waffle") {
+                        if (base === "nutella") {
+                            precio += 13000;
+                        } else if (base === "manjar") {
+                            precio += 12000;
+                        } else if (base === "ambos") {
+                            precio += 14000;
+                        }
+                    } else {
+                        if (base === "nutella") {
+                            precio += 3800;
+                        } else if (base === "manjar") {
+                            precio += 3300;
+                        } else if (base === "ambos") {
+                            precio += 4000;
+                        }
+                    }
+
+                    if (helado === "si") {
+                        precio += 900;
+                    }
 
                     var mensaje = "*Pedido:* Tipo: " + tipo_pedido;
                     mensaje += ", Base: " + base;
@@ -211,27 +220,14 @@
                     mensaje += ", Crema: " + crema;
                     mensaje += ", Helado: " + helado;
                     if (helado === "si") {
-                        mensaje += ", Sabor de Helado: " + $("#sabores_helado").val();
+                        mensaje += ", Sabores de Helado: " + $("#sabores_helado").val();
                     }
                     mensaje += ", Precio: $" + precio;
 
-                    var payload = {
-                        "op": "registermessage",
-                        "token_qr": token,
-                        "mensajes": [
-                            {"numero": celular, "mensaje": mensaje}
-                        ]
-                    };
-                    $.ajax({
-                        url: api,
-                        jsonp: "callback",
-                        method: 'POST',
-                        data: JSON.stringify(payload),
-                        async: false,
-                        success: function(respuestaSolicitud) {
-                            alert(respuestaSolicitud.message);
-                        }
-                    });
+                    var celular = $("#txt_celular").val();
+                    var url = "https://wa.me/" + celular + "?text=" + encodeURIComponent(mensaje);
+
+                    window.open(url, "_blank");
                 }
 
                 this.classList.add('was-validated');
@@ -267,17 +263,17 @@
             }
 
             document.getElementById("precio").innerText = "Precio: $" + precio;
-            return precio;
         }
 
         function mostrarOpcionesHelado() {
             var helado = $('#helado').val();
             if (helado === 'si') {
                 $('#opciones_helado').show();
+                calcularPrecio(); 
             } else {
                 $('#opciones_helado').hide();
+                calcularPrecio();
             }
-            calcularPrecio();
         }
     </script>
   </div>

@@ -5,30 +5,56 @@ body {
   }
   
   .nav-item {
-      border: 2px solid #e64141;
-      border-radius: 10px;
-      margin: 0 15px;
-      padding: 10px 20px;
-      background-color: white;
-      font-size: 18px;
-      font-family: 'Roboto';
-      font-size: 30px;
-    }
-  
-    .nav-item:hover {
-      background-color: #2760fd;
-    }
-  
-    .navbar {
-      border: 2px solid #e64141;
-  
-      background-color: #f55aed;
-      font-size: 18px;
-      
+    border: 2px solid #e64141;
+    border-radius: 10px;
+    margin: 15px;
+    padding: 10px 20px;
+    background-color: white;
+    font-size: 18px;
+    font-family: 'Roboto';
+    font-size: 30px;
+}
+
+.nav-item:hover {
+    background-color: #2760fd;
+}
+
+.navbar {
+    border: 2px solid #e64141;
+    border-radius: 15px; /* Añadido para bordes redondeados */
+    background-color: #f55aed;
+    font-size: 18px;
+}
+
+.navbar-brand img {
+    width: 100px;
+    height: 100px;
+}
+      /* Estilos CSS */
+      .container1 {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #ffc0cb; /* Fondo rosa */
+        border-radius: 10px; /* Añadido para dar un borde redondeado al contenedor */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave al contenedor */
     }
     
-    .navbar-brand img {
-      width: 100px;
-      height: 100px;
+    h1 {
+        text-align: center;
+        color: #333;
+        font-family: 'Arial Black', sans-serif; /* Fuente negrita */
+        font-size: 2.5em; /* Tamaño grande */
+        text-transform: uppercase; /* Convertir a mayúsculas */
+        letter-spacing: 2px; /* Espaciado entre letras */
+        margin-bottom: 20px; /* Espacio inferior */
+    }
+    
+    p {
+        text-align: justify;
+        line-height: 1.6;
+        color: #666;
+        font-size: 1.1em; /* Tamaño de fuente un poco más grande */
+        margin-bottom: 15px; /* Espacio inferior */
     }
   
