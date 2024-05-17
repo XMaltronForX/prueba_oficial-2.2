@@ -41,31 +41,31 @@
 
 <div class="container">
   <h1>Contáctanos</h1>
-  <form>
+  <form id="contactoForm">
       <div class="form-group">
           <label for="nombre">Nombre</label>
-          <input type="text" class="form-control" id="nombre" required>
+          <input type="text" class="form-control" id="nombre" name="nombre" required>
       </div>
       <div class="form-group">
           <label for="apellido">Apellido</label>
-          <input type="text" class="form-control" id="apellido" required>
+          <input type="text" class="form-control" id="apellido" name="apellido" required>
       </div>
       <div class="form-group">
           <label for="correo">Correo Electrónico</label>
-          <input type="email" class="form-control" id="correo" required>
+          <input type="email" class="form-control" id="correo" name="correo" required>
       </div>
       <div class="form-group">
           <label for="telefono">Teléfono</label>
-          <input type="tel" class="form-control" id="telefono" pattern="[0-9]{9}" required>
+          <input type="tel" class="form-control" id="telefono" name="telefono" pattern="[0-9]{9}" required>
           <small id="telHelp" class="form-text text-muted">Debe contener 9 dígitos.</small>
       </div>
       <div class="form-group">
           <label for="direccion">Dirección</label>
-          <input type="text" class="form-control" id="direccion" required>
+          <input type="text" class="form-control" id="direccion" name="direccion" required>
       </div>
       <div class="form-group">
           <label for="mensaje">Mensaje</label>
-          <textarea class="form-control" id="mensaje" rows="5" required></textarea>
+          <textarea class="form-control" id="mensaje" name="mensaje" rows="5" required></textarea>
           <small id="mensajeHelp" class="form-text text-muted">Debe contener al menos 5 palabras.</small>
       </div>
       <button type="submit" class="btn btn-primary">Enviar</button>
@@ -73,8 +73,9 @@
 </div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.5.4/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
+<script src="js/contactanos.js"></script>
 </body>
 </html>
